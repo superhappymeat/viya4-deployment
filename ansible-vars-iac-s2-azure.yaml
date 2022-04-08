@@ -1,0 +1,49 @@
+## used for sas-dns
+DNS_TYPE: sas
+USER: <sas-userid>
+PASSWORD: <sas-userid-pw>
+FORCE_DNS: true
+
+## Cluster
+PROVIDER: azure
+NAMESPACE: "davhou-pit-fast-s2-2020"
+
+## MISC
+DEPLOY: false # Set to false to stop at generating the kustomize.yaml and manifest
+# SAS IP ranges are included. When deploying using a cloud provider you'll need to add the nat_ip from your terraform output into the array. Example: Where nat_ip is - 10.124.52.8
+# LOADBALANCER_SOURCE_RANGES: ["109.232.56.224/27", "149.173.0.0/16", "194.206.69.176/28", "121.244.0.0/16", "10.124.52.8/32"]
+LOADBALANCER_SOURCE_RANGES: ['109.232.56.224/27', '149.173.0.0/16', '194.206.69.176/28']
+
+## Storage 
+V4_CFG_MANAGE_STORAGE: true #[true|false]
+
+## SAS API Access
+V4_CFG_SAS_API_KEY: '<key>'
+V4_CFG_SAS_API_SECRET: '<secret>'
+
+# Order
+V4_CFG_ORDER_NUMBER:  0B21B4
+V4_CFG_CADENCE_NAME:  fast
+V4_CFG_CADENCE_VERSION:  2020
+
+## CR Access
+V4_CFG_CR_USER: <user>
+V4_CFG_CR_PASSWORD: <pass>
+V4_CFG_CR_URL: crcache-az-us-east.unx.sas.com
+
+## Ingress
+V4_CFG_INGRESS_TYPE: ingress # [ingress]
+V4_CFG_INGRESS_FQDN: davhou.devops.unx.sas.com # fqdn
+V4_CFG_BASE_DOMAIN: devops.unx.sas.com # A record and wildcard subdomain will be created (*.DESIRED_SUBDOMAIN.unx.sas.com)
+V4_CFG_TLS_MODE: "disabled" # [full-stack|front-door|disabled]
+
+## Postgres
+
+## LDAP
+V4_CFG_EMBEDDED_LDAP_ENABLE: true
+
+## Consul UI
+V4_CFG_CONSUL_ENABLE_LOADBALANCER: false
+
+## SAS/CONNECT
+V4_CFG_CONNECT_ENABLE_LOADBALANCER: false
